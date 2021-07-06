@@ -46,5 +46,6 @@ while date_cursor <= last_date:
 
     nextdatebutton = soup.find_all("a", attrs={"class": re.compile(r'fa-caret-right')}) #find next comic in calendar
     print(nextdatebutton[0]["href"])
-    date_cursor = datetime.strptime(nextdatebutton[0]["href"], '/cathy/%Y/%m/%d').date()
+    url_date = '/{}/%Y/%m/%d'.format(comic_name)
+    date_cursor = datetime.strptime(nextdatebutton[0]["href"], url_date).date()
     time.sleep(requestWaitMs / 1000)
